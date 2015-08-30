@@ -25,6 +25,7 @@ Raspberry Pi Model B
 
 dirname
     is the path where the Raspberry provides the values of the 1-wire - sensors
+    
     default "/sys/bus/w1/devices"
 
 cycle
