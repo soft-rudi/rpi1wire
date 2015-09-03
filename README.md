@@ -20,11 +20,13 @@ Raspberry Pi Model B
 ### /boot/config.txt
 
    # activating 1-wire without pullup (3-wire-Version)
+   
    dtoverlay=w1-gpio,gpiopin=4,pullup=off
 
 ### /etc/modules
 
    w1-gpio pullup=0  (3-wire-Version)
+   
    w1-therm
 
 # Smarthome
