@@ -13,6 +13,22 @@ Raspberry Pi Model B
 
 # Configuration
 
+## Raspberry Pi
+
+   see also: http://www.kompf.de/weather/pionewiremini.html
+
+### /boot/config.txt
+
+   # activating 1-wire without pullup (3-wire-Version)
+   dtoverlay=w1-gpio,gpiopin=4,pullup=off
+
+### /etc/modules
+
+   w1-gpio pullup=0  (3-wire-Version)
+   w1-therm
+
+# Smarthome
+
 ## plugin.conf
 
 <pre>
@@ -30,6 +46,7 @@ dirname
 
 cycle
     is the period in which the values are updated
+    
     default 120 seconds
 
 ## items.conf
@@ -77,7 +94,6 @@ If you trigger this item, the sensors are re-searched without restart the server
         type = num
         visu_acl = ro
         rpi1wire_name = rpi_temp1
-        rpi1wire_unit = Grad C
         sqlite = yes
 
 or
@@ -89,7 +105,6 @@ or
         type = num
         visu_acl = ro
         rpi1wire_id = 28-0215018970ff
-        rpi1wire_unit = Grad C
         sqlite = yes
 
 [rpi1wire]
