@@ -43,47 +43,49 @@ Raspberry Pi Model B
 </pre>
 
 dirname
-    is the path where the Raspberry provides the values of the 1-wire - sensors
-    
-    default "/sys/bus/w1/devices"
-
+<pre>
+   is the path where the Raspberry provides the values of the 1-wire - sensors
+   default "/sys/bus/w1/devices"
+</pre>
 cycle
-    is the period in which the values are updated
-    
-    default 120 seconds
-
+<pre>
+   is the period in which the values are updated
+   default 120 seconds
+</pre>   
 ## items.conf
-
-[rpi1wire]
-    [[sensor_list]]
-        name = Sensor-List
-        type = str
-        visu_acl = ro
-    [[sensors]]
-        name = Sensors
-        type = num
-        visu_acl = ro
-
+<pre>
+   [rpi1wire]
+       [[sensor_list]]
+           name = Sensor-List
+           type = str
+           visu_acl = ro
+       [[sensors]]
+          name = Sensors
+          type = num
+          visu_acl = ro
+</pre>
 sh.rpi1wire.sensor_list()
-    - contains a list of all found sensors
-
+<pre>
+   - contains a list of all found sensors
+</pre>
 sh.rpi1wire.sensors()
-    - contains the number of sensors found
-
+<pre>
+   - contains the number of sensors found
+</pre>
 ### rpi1wire_name
-
-The name of the 1-wire - sensor
+<pre>   
+   The name of the 1-wire - sensor
     - rpi1wire_name or rpi1wire_id are possible
-
+</pre>   
 ### rpi1wire_id
-
-The id of the 1-wire - sensor
+<pre>   
+   The id of the 1-wire - sensor
     - rpi1wire_name or rpi1wire_id are possible
-
+</pre>   
 ### rpi1wire_update
-
-If you trigger this item, the sensors are re-searched without restart the server
-
+<pre>   
+   If you trigger this item, the sensors are re-searched without restart the server
+</pre>   
 
 ### Example
 
@@ -99,7 +101,7 @@ If you trigger this item, the sensors are re-searched without restart the server
         rpi1wire_name = rpi_temp1
         sqlite = yes
 
-or
+#or
 
 [someroom]
     [[mytemperature]]
