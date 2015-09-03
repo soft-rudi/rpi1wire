@@ -22,18 +22,11 @@
 import logging
 import os
 
-# debugging
-#import pydevd
-
 logger = logging.getLogger('')
 
 class Rpi1Wire():
-    #pydevd.settrace('192.168.178.25', port=12000, stdoutToServer=True, stderrToServer=True)
-    #pydevd.settrace('192.168.178.69', port=12000, stdoutToServer=True, stderrToServer=True)
-
 
     def __init__(self, smarthome, dirname="/sys/bus/w1/devices",cycle = 120):
-        #pydevd.settrace('192.168.178.25', port=12000, stdoutToServer=True, stderrToServer=True)
         logger.info('Init rpi1wire')
         self._sh = smarthome
         self.dirname = dirname
@@ -78,8 +71,6 @@ class Rpi1Wire():
         if 'rpi1wire_unit' not in item.conf:
             logger.warning("rpi1wire_unit for {0} not defined".format(item.id()))
             return None
-        #pydevd.settrace('192.168.178.25', port=12000, stdoutToServer=True, stderrToServer=True)
-        #pydevd.settrace('192.168.178.69', port=12000, stdoutToServer=True, stderrToServer=True)
         not_found = False
         if 'rpi1wire_id'in item.conf:
             addr = item.conf['rpi1wire_id']
@@ -100,15 +91,12 @@ class Rpi1Wire():
                     logger.warning("Sensor {0} Hardware not found".format(item.conf['rpi1wire_name']))
                     not_found = True
         if not_found == False:
-            #self._sensordaten[addr] = {'item': item, 'name': name}
             self._sensordaten[addr]['item'] = item
-            logger.info("{0} rpi1wire-items registriert".format(len(self._sensordaten)))
-
+ 
     def parse_logic(self, logic):
         pass
 
     def update_item(self, item, caller=None, source=None, dest=None):
-        #pydevd.settrace('192.168.178.25', port=12000, stdoutToServer=True, stderrToServer=True)
         if self.update == True:
             return None
         if 'rpi1wire_update' in item.conf:
@@ -133,17 +121,14 @@ class Rpi1Wire():
                 self._sensordaten[id]['value'] = round(value/float(1000),1)
             except:
                 logger.info("sensor {0} has no item".format(id))
-            #print("Temperatursensor ",sensor,": ", round(value/float(1000),1), "(",value,")",sep=" ")
-                 
+
     def get_sensors(self):
-        #pydevd.settrace('192.168.178.25', port=12000, stdoutToServer=True, stderrToServer=True)
         objects = self.folder_objects(self.dirname)
         i=1
         for sensor in objects:
             if 'w1_bus' in sensor:
                 continue
             typ = sensor.rsplit("-",1)
-            #if typ[0] == "28":
             if typ[0] in ['10', '22', '28']:
                 value = self.getvalue(sensor)
                 if value == 99999:
@@ -154,7 +139,6 @@ class Rpi1Wire():
                     self.sensors["rpi_temp"+str(i)] = sensor
                     self.values["rpi_temp"+str(i)] = round(value/float(1000),1)
                     self._sensordaten[sensor]= {'name' : "rpi_temp"+str(i), 'value' : round(value/float(1000),1)}
-                    #print("Temperatursensor ",sensor,": ", round(value/float(1000),1), "(",value,")",sep=" ")
                     i+=1
 
     def folder_objects(self, dirname, otype="all"):
@@ -197,10 +181,7 @@ class Rpi1Wire():
             return 99999
 
     def update_sensors(self):
-        #pydevd.settrace('192.168.178.69', port=12000, stdoutToServer=True, stderrToServer=True)
         self.update = True
-        #for a in self.sensors:
-        #    del self.sensors[a]
         self.sensors = {}
         self.anz_sensors = 0
         self.get_sensors()
