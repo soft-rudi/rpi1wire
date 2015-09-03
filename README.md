@@ -18,16 +18,17 @@ Raspberry Pi Model B
    see also: http://www.kompf.de/weather/pionewiremini.html
 
 ### /boot/config.txt
-
+<pre>
    # activating 1-wire without pullup (3-wire-Version)
-   
    dtoverlay=w1-gpio,gpiopin=4,pullup=off
-
+</pre>
 ### /etc/modules
 
-   w1-gpio pullup=0  (3-wire-Version)
-   
+<pre>
+   #(3-wire-Version)
+   w1-gpio pullup=0  
    w1-therm
+</pre>
 
 # Smarthome
 
