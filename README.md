@@ -42,6 +42,16 @@ Raspberry Pi Model B
 #   cycle = 120
 </pre>
 
+## plugin.yaml
+
+<pre>
+rpi1wire:
+   class_name: Rpi1Wire
+   class_path: plugins.rpi1wire
+#   dirname: "/sys/bus/w1/devices"
+#   cycle: 120
+</pre>
+
 dirname
 <pre>
    is the path where the Raspberry provides the values of the 1-wire - sensors
@@ -52,6 +62,8 @@ cycle
    is the period in which the values are updated
    default 120 seconds
 </pre>   
+
+
 ## items.conf
 <pre>
    [rpi1wire]
@@ -120,4 +132,3 @@ sh.rpi1wire.sensors()
         rpi1wire_update = 1
 
 </pre>
-

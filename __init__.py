@@ -25,7 +25,6 @@ import os
 logger = logging.getLogger('')
 
 class Rpi1Wire():
-
     def __init__(self, smarthome, dirname="/sys/bus/w1/devices",cycle = 120):
         logger.info('Init rpi1wire')
         self._sh = smarthome
@@ -92,7 +91,7 @@ class Rpi1Wire():
                     not_found = True
         if not_found == False:
             self._sensordaten[addr]['item'] = item
- 
+
     def parse_logic(self, logic):
         pass
 
