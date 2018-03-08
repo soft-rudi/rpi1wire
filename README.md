@@ -52,6 +52,17 @@ cycle
    is the period in which the values are updated
    default 120 seconds
 </pre>   
+
+## plugin.yaml
+
+<pre>
+rpi1wire:
+   class_name: Rpi1Wire
+   class_path: plugins.rpi1wire
+#   dirname: "/sys/bus/w1/devices"
+#   cycle: 120
+</pre>
+
 ## items.conf
 <pre>
    [rpi1wire]
