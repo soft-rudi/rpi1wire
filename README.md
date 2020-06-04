@@ -9,7 +9,9 @@ We tested the plugin with the Raspberry Pi B and the temperature sensor DS18B20.
 ### Supported Hardware
 
 Tested with:
-Raspberry Pi Model B
+Raspberry Pi Model B, 
+Raspberry Pi 2B, 
+Raspberry Pi 3B, 
 1-Wire - Sensor DS18B20
 
 ## Configuration

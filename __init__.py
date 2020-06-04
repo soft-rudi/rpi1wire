@@ -24,13 +24,6 @@
 #
 #########################################################################
 
-# Debugging
-#import ptvsd
-#ptvsd.enable_attach()
-#ptvsd.wait_for_attach()
-#ptvsd.break_into_debugger()
-#breakpoint()
-
 from lib.module import Modules
 from lib.model.smartplugin import *
 #from lib.model.mqttplugin import *
@@ -62,7 +55,6 @@ class Rpi1Wire(SmartPlugin):
             self.logger = logging.getLogger(__name__)
 
         self.logger.info('Init rpi1wire')
-        #breakpoint()
         # get the parameters for the plugin (as defined in metadata plugin.yaml):
         try:
             self.dirname = self.get_parameter_value('dirname')
@@ -102,7 +94,6 @@ class Rpi1Wire(SmartPlugin):
         """
         Run method for the plugin
         """
-        #breakpoint()
         self.logger.debug("Run method called")
         # setup scheduler for device poll loop   (disable the following line, if you don't need to poll the device. Rember to comment the self_cycle statement in __init__ as well)
         self.scheduler_add('rpi1wire', self.update_values, prio=3, cycle=self.cycle)
@@ -115,7 +106,6 @@ class Rpi1Wire(SmartPlugin):
         # ToDo:
         # using "rpi1wire" is a bad idea since this is also likely used as plugin name
         # better make it an item attribute and search for that
-        #breakpoint()
         anz = self.get_sh().return_item(self.sysitems['count'])
         #anz = self.get_sh().return_item("rpi1wire.sensors")
         ids = self.get_sh().return_item(self.sysitems['list'])
@@ -147,9 +137,8 @@ class Rpi1Wire(SmartPlugin):
                         with the item, caller, source and dest as arguments and in case of the knx plugin the value
                         can be sent to the knx with a knx write function within the knx plugin.
         """
-        #breakpoint()
 #        if self.has_iattr(item.conf, 'rpi1wire_update'):
-#            self.logger.warning("parse item: {}".format(item))
+#            self.logger.info("parse item: {}".format(item))
 #            ad = self.get_iattr_value( item.conf,'rpi1wire_update')
 #            return self.update_item
             
@@ -176,7 +165,6 @@ class Rpi1Wire(SmartPlugin):
 
         not_found = False
         if self.has_iattr(item.conf, 'rpi1wire_id'):
-            #breakpoint()
             addr = self.get_iattr_value( item.conf,'rpi1wire_id')
             try:
                 for sn, sid in self.sensors.items():
@@ -331,11 +319,9 @@ class Rpi1Wire(SmartPlugin):
         self.update = False
 
     def search_item(self): #Durchsucht die items nach den Attributen des Plugins
-        #breakpoint()
         items = self.get_sh().return_items()
         for item in items:
             if self.has_iattr(item.conf, 'rpi1wire_id'):
-                #breakpoint()
                 addr = self.get_iattr_value(item.conf, 'rpi1wire_id')
                 try:
                     for sn, sid in self.sensors.items():
@@ -354,7 +340,6 @@ class Rpi1Wire(SmartPlugin):
                 except:
                     self.logger.warning("Sensor {0} Hardware not found".format(name))
             if self.has_iattr(item.conf, 'rpi1wire_sys'):
-                #breakpoint()
                 type = self.get_iattr_value( item.conf, 'rpi1wire_sys')
                 try:
                     sitem = item._path
