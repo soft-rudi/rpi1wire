@@ -54,15 +54,18 @@ item_attributes:
             de: 'Alternativ zu Sensoradresse kann auch ein Name in der Form rpi-temp1 vergeben werden, wobei die Zahl am Ende die laufende Nummer der gefundenen Sensoren bestimmt.'
             en: 'As an alternative to the sensor address, a name in the form rpi-temp1 can also be assigned, with the number at the end determining the serial number of the sensors found.'
          
+    rpi1wire_update:
+        type: bool
+        description:
+            de: 'Started bei Triggerung ein Update der Sensorliste'
+            en: 'Rereads the sensor list after being triggered'
+
     rpi1wire_sys:
         type: str
         description:
-            de: 'Attribut für Globale Plugin Items zum Triggern eines Update, Anzeigen der Anzahl gefundener Sensoren oder Auflistung der gefundenen Sensoren'
-            en: 'Attribute for global plugin items to trigger value read update, count of sensors and list of sensores'
-        valid_list:
-          - update  # de: 'Started bei Triggerung ein Update der Sensorliste'; en: 'Rereads the sensor list after being triggered'
-          - list    # de: 'Liste mit allen am Zielort gefundenen Sensoren'; en: 'List showing all found sensors'
-          - count   # de: 'Anzahl der am Zielort gefundenen Sensoren'; en: 'Count of all found sensors'
+            de: 'Mögliche Werte sind count oder list. Bei count wird die Anzahl der gefundenen Sensoren dem item.value als Integer übergeben, bei list wird eine Liste der gefundenen Sensoren als String übergeben'
+            en: 'Possible values ​​are count or list. With count the number of sensors found is transferred to item.value as an integer, with list a list of the sensors found is transferred as a string'
+
 
 item_structs: NONE
     # Definition of item-structure templates for this plugin (enter 'item_structs: NONE', if section should be empty)

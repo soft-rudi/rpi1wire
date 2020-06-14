@@ -146,8 +146,6 @@ rpi1wire:
 
 ## Web Interfaces
 
-A Big ToDo here: 
-- List found sensors
-- List Items affected with rpi1wire_id or rpi1wire_name
-- Show Items with rpi1wire_update
+The Webinterface is reachable on you smarthomeNG server here :
+yourserver:8383/rpi1wire/
 
